@@ -13,19 +13,19 @@ import VitePluginMenuGenerator from './src/static/plugins/vite-plugin-menu-gener
 const PAGES_DIR = 'src/pages'
 
 // 获取所有包含 config.json 的目录下的 index.vue
-const getValidPaths = () => {
-  const configs = fg.sync('**/config.json', {
-    cwd: PAGES_DIR,
-    absolute: false,
-  })
-  const res = configs.map(configPath => {
-    const dir = configPath.replace('/config.json', '')
-    return `${dir}/*`
-  })
-  res.push('*')
-  console.log(res)
-  return res
-}
+// const getValidPaths = () => {
+//   const configs = fg.sync('**/config.json', {
+//     cwd: PAGES_DIR,
+//     absolute: false,
+//   })
+//   const res = configs.map(configPath => {
+//     const dir = configPath.replace('/config.json', '')
+//     return `${dir}/index.*`
+//   })
+//   res.push('*.{vue}')
+//   console.log(res)
+//   return res
+// }
 const watchDir = path.resolve(process.cwd(), 'src/pages') // 监听的目录
 const watchPattern = path.join(watchDir, '**/config.json') // 监听 `src/pages/**/config.json`
 // https://vitejs.dev/config/
@@ -51,7 +51,7 @@ export default defineConfig({
     VueRouter({
       routesFolder: PAGES_DIR,
       extensions: ['.vue', '.md'],
-      filePatterns: getValidPaths(),
+      // filePatterns: getValidPaths(),
       dts: 'src/typed-router.d.ts',
     }),
     VitePluginMenuGenerator(),

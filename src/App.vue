@@ -4,9 +4,10 @@
     <div class="main-container flex">
       <BaseSide />
       <div class="bg-gray-100 w-full py-14 px-14 overflow-auto">
-        <Layout>
+        <RouterView />
+        <!-- <Layout>
           <RouterView />
-        </Layout>
+        </Layout> -->
       </div>
     </div>
   </el-config-provider>

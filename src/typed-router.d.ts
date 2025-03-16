@@ -20,9 +20,12 @@ declare module 'vue-router/auto-routes' {
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/enterprise-manage/': RouteRecordInfo<'/enterprise-manage/', '/enterprise-manage', Record<never, never>, Record<never, never>>,
+    '/enterprise-manage/detail/[id]': RouteRecordInfo<'/enterprise-manage/detail/[id]', '/enterprise-manage/detail/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
+    '/enterprise-manage/set': RouteRecordInfo<'/enterprise-manage/set', '/enterprise-manage/set', Record<never, never>, Record<never, never>>,
     '/home/': RouteRecordInfo<'/home/', '/home', Record<never, never>, Record<never, never>>,
     '/logs-manage/': RouteRecordInfo<'/logs-manage/', '/logs-manage', Record<never, never>, Record<never, never>>,
     '/report-manage/': RouteRecordInfo<'/report-manage/', '/report-manage', Record<never, never>, Record<never, never>>,
+    '/report-manage/editor/[id]': RouteRecordInfo<'/report-manage/editor/[id]', '/report-manage/editor/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/settings/': RouteRecordInfo<'/settings/', '/settings', Record<never, never>, Record<never, never>>,
     '/user-manage/': RouteRecordInfo<'/user-manage/', '/user-manage', Record<never, never>, Record<never, never>>,
   }

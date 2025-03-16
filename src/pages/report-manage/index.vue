@@ -1,3 +1,62 @@
 <template>
-  report-manage1111
+  <Layout>
+    <section class="flex flex-col h-full enterprise-manage">
+      <div class="header flex items-center justify-between">
+        <div class="flex items-center">
+          <Search class="mr-2" placeholder="输入企业名称" />
+          <Search class="mr-2" placeholder="输入报告名称" />
+          <el-select class="mr-2" style="width: 100px;" placeholder="请选择">
+            <el-option label="A" value="1" />
+            <el-option label="B" value="2" />
+            <el-option label="C" value="3" />
+          </el-select>
+          <el-button type="primary">搜索</el-button>
+        </div>
+      </div>
+      <Table class="flex-1" :tableData="tableData" :currentPage="currentPage" :pageSize="pageSize"
+        :background="background">
+        <el-table-column width="240" prop="name" label="企业名称" />
+        <el-table-column width="240" prop="reportName" label="报告名称" />
+        <el-table-column width="240" prop="reportType" label="报告类型" />
+        <el-table-column width="240" prop="reportManager" label="报告负责人" />
+        <el-table-column width="200" fixed="right" label="操作">
+          <template #default="scope">
+            <div class="buttons flex flex-col items-center justify-center">
+              <el-button @click="handleDetail(scope.row)" type="primary" size="small">详情</el-button>
+              <el-button type="danger" size="small">删除</el-button>
+            </div>
+          </template>
+        </el-table-column>
+      </Table>
+    </section>
+  </Layout>
+
 </template>
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter()
+const tableData = ref([
+  {
+    name: '松莉美容科技（上海）有限公司',
+    reportName: '松莉美容',
+    reportType: '财务报告',
+    reportManager: '李小明',
+    updateTime: '2019-08-25 14:54',
+  },
+])
+const currentPage = ref(1)
+const pageSize = ref(10)
+const background = ref(true)
+const handleDetail = (row: any) => {
+  router.push(`/report-manage/editor/${row.id}`)
+}
+</script>
+<style lang="scss" scoped>
+.buttons {
+  &>* {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+}
+</style>
