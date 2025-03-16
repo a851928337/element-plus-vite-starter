@@ -1,0 +1,9 @@
+{
+  "label": "系统设置",
+  "title": "系统设置",
+  "index": 5,
+  "icon": {
+    "type": "icon",
+    "val": "Tools"
+  }
+}

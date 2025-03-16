@@ -5,7 +5,8 @@ import {
   Location,
   Setting,
 } from '@element-plus/icons-vue'
-
+import { menuItems } from '~/config/menu'
+import Route from '~/static/utils/route'
 // const isCollapse = ref(true)
 function handleOpen(key: string, keyPath: string[]) {
   // eslint-disable-next-line no-console
@@ -18,13 +19,17 @@ function handleClose(key: string, keyPath: string[]) {
 </script>
 
 <template>
-  <el-menu
-    router
-    default-active="1"
-    class="el-menu-vertical-demo"
-    @open="handleOpen"
-    @close="handleClose"
-  >
+  <el-menu router :default-active="Route.current()" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+    <el-menu-item v-for="item in menuItems" :key="item.index" :index="item.path">
+      <el-icon v-if="item.icon?.type === 'icon'" size="20" color="#000">
+        <component :is="item.icon?.val" />
+      </el-icon>
+      <template #title>
+        {{ item.label }}
+      </template>
+    </el-menu-item>
+
+    <!--
     <el-sub-menu index="1">
       <template #title>
         <el-icon>
@@ -80,6 +85,6 @@ function handleClose(key: string, keyPath: string[]) {
       <template #title>
         Navigator Four
       </template>
-    </el-menu-item>
+    </el-menu-item> -->
   </el-menu>
 </template>

@@ -1,0 +1,9 @@
+{
+  "label": "系统首页",
+  "title": "系统首页",
+  "index": 0,
+  "icon": {
+    "type": "icon",
+    "val": "House"
+  }
+}

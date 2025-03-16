@@ -4,4 +4,7 @@ export default antfu({
   formatters: true,
   unocss: true,
   vue: true,
+  rules: {
+    'import/newline-after-import': ['error', { count: 0 }],
+  },
 })

@@ -1,4 +1,7 @@
-<template>
-  <Logos my="4" />
-  <HelloWorld msg="Hello Vue 3 + Element Plus + Vite" />
-</template>
+<template>11111</template>
+<script setup lang="ts">
+import { definePage } from 'vue-router/auto';
+definePage({
+  redirect: '/home',
+})
+</script>

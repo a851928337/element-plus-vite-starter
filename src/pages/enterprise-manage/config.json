@@ -1,0 +1,9 @@
+{
+  "label": "企业管理",
+  "title": "企业管理",
+  "index": 1,
+  "icon": {
+    "type": "icon",
+    "val": "Menu"
+  }
+}

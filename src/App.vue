@@ -3,16 +3,28 @@
     <BaseHeader />
     <div class="main-container flex">
       <BaseSide />
-      <div w="full" py="4">
-        <RouterView />
+      <div class="bg-gray-100 w-full py-14 px-14 overflow-auto">
+        <Layout>
+          <RouterView />
+        </Layout>
       </div>
     </div>
   </el-config-provider>
 </template>
-
+<script setup lang="ts">
+import useUserStore from '~/store/store'
+import { definePage } from 'vue-router/auto'
+import { onMounted } from 'vue'
+const userStore = useUserStore()
+definePage({
+  redirect: '/home',
+})
+onMounted(() => {
+  userStore.init()
+})
+</script>
 <style>
 #app {
-  text-align: center;
   color: var(--ep-text-color-primary);
 }
 

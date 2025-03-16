@@ -1,0 +1,9 @@
+{
+  "label": "报告管理",
+  "title": "报告管理",
+  "index": 2,
+  "icon": {
+    "type": "icon",
+    "val": "Memo"
+  }
+}

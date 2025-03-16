@@ -3,7 +3,7 @@ import { ViteSSG } from 'vite-ssg'
 
 // import "~/styles/element/index.scss";
 
-// import ElementPlus from "element-plus";
+import ElementPlus from "element-plus";
 // import all element css, uncommented next line
 // import "element-plus/dist/index.css";
 
@@ -19,28 +19,43 @@ import 'uno.css'
 import 'element-plus/theme-chalk/src/message.scss'
 import 'element-plus/theme-chalk/src/message-box.scss'
 
+
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
+// const app = createApp(App)
+
+
 // if you do not need ssg:
-// import { createApp } from "vue";
+import { createApp } from "vue";
+import { createRouter, createWebHistory } from 'vue-router';
 
-// const app = createApp(App);
-// app.use(createRouter({
-//   history: createWebHistory(),
-//   routes,
-// }))
-// // app.use(ElementPlus);
-// app.mount("#app");
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+const app = createApp(App);
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
+app.use(createRouter({
+  history: createWebHistory(),
+  routes,
+}))
+app.use(ElementPlus);
+app.use(pinia)
+app.mount("#app");
 // https://github.com/antfu/vite-ssg
-export const createApp = ViteSSG(
-  App,
-  {
-    routes,
-    base: import.meta.env.BASE_URL,
-  },
-  (ctx) => {
-    // install all modules under `modules/`
-    Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
-      .forEach(i => i.install?.(ctx))
-    // ctx.app.use(Previewer)
-  },
-)
+// export const createApp = ViteSSG(
+//   App,
+//   {
+//     routes,
+//     base: import.meta.env.BASE_URL,
+//   },
+//   (ctx) => {
+//     // install all modules under `modules/`
+//     Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
+//       .forEach(i => i.install?.(ctx))
+//     // ctx.app.use(Previewer)
+//   },
+// )
