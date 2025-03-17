@@ -3,19 +3,24 @@
     <div :style="{ width: props.menuWidth || '200px' }" ref="headerContainer" id="header-container"
       class="header-container">
     </div>
-    <div id="editor-container" class="editor-container"><!-- 编辑器 --></div>
+    <div v-if="isInit" id="editor-container" class="editor-container">
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import '@wangeditor/editor/dist/css/style.css' // 引入 css
-import { onBeforeUnmount, ref, onMounted, watch, CSSProperties } from 'vue'
-import { createEditor, SlateNode, IDomEditor } from '@wangeditor/editor'
+import { onBeforeUnmount, ref, onMounted, watch, computed, nextTick } from 'vue'
+import { createEditor, createToolbar, SlateNode, IDomEditor, Toolbar } from '@wangeditor/editor'
+import useEditorStore from './store'
 const props = defineProps<{
   placeholder?: string
   menuWidth?: string
 }>()
-const editorRef = ref<IDomEditor | null>(null)
-const headerContainer = ref<HTMLElement | null>(null)
+const isInit = ref(false)
+const editorStore = useEditorStore()
+// const toolbarRef = ref<Toolbar>()
+const editorRef = computed(() => editorStore.editorRef)
+const headerContainer = ref<HTMLElement>()
 const editorConfig = {
   placeholder: props.placeholder || '请输入内容...',
   onChange(editor: IDomEditor) {
@@ -30,21 +35,28 @@ const editorConfig = {
   },
 }
 
-
 const modelValue = defineModel<string>('modelValue')
 
 // 组件销毁时，也及时销毁编辑器
 onBeforeUnmount(() => {
-  editorRef.value?.destroy()
+  editorStore.clearRef()
 })
 
 onMounted(() => {
-  editorRef.value = createEditor({
-    selector: '#editor-container',
-    html: modelValue.value,
-    config: editorConfig,
-    mode: 'simple', // or 'simple'
-  })
+  isInit.value = true
+})
+watch(isInit, (val) => {
+  if (val) {
+    nextTick(() => {
+      const editor = createEditor({
+        selector: '#editor-container',
+        html: modelValue.value,
+        config: editorConfig,
+        mode: 'simple', // or 'simple'
+      })
+      editorStore.setRef(editor)
+    });
+  }
 })
 watch(modelValue, (val) => {
   editorRef.value?.setHtml(val || '')

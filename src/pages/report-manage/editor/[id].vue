@@ -1,7 +1,8 @@
 <template>
   <div class="container flex">
     <WangEditor class="left" placeholder="请输入内容" v-model="content" />
-    <Insert target="#editor-container" class="right" :list="insertList" />
+    <Insert :auto-insert="false" target="#editor-container" class="right" :list="insertList"
+      @after-insert="handleAfterInsert" />
     <!-- <div class="w-1/2 right" v-html="json"></div> -->
   </div>
 </template>
@@ -10,6 +11,8 @@
 import { computed, ref, onMounted, watch } from 'vue';
 import Editor from '~/static/utils/editor';
 import { mockWordJson } from '~/static/mock/rich-text';
+import useEditorStore from '~/components/WangEditor/store';
+const editorStore = useEditorStore()
 const content = ref('');
 const insertList = ref([
   {
@@ -43,6 +46,10 @@ const json = computed(() => {
 const equal = computed(() => {
   return content.value === json.value;
 });
+function handleAfterInsert(item: any, style: any) {
+  editorStore.editorRef?.dangerouslyInsertHtml(`<span style="color: ${style.color}; background-color: ${style['background-color']}; padding: ${style.padding}; border-radius: ${style['border-radius']}">#{${item.value}}</span>`)
+  console.log(editorStore.editorRef?.getHtml())
+}
 </script>
 
 <style scoped lang="scss">

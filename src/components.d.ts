@@ -27,12 +27,14 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTreeSelect: typeof import('element-plus/es')['ElTreeSelect']
     ElUpload: typeof import('element-plus/es')['ElUpload']
+    Inde: typeof import('./components/QuillEditor/inde.vue')['default']
     Insert: typeof import('./components/Insert.vue')['default']
     Layout: typeof import('./components/Layout.vue')['default']
+    QuillEditor: typeof import('./components/QuillEditor/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Search: typeof import('./components/Search.vue')['default']
     Table: typeof import('./components/Table.vue')['default']
-    WangEditor: typeof import('./components/WangEditor.vue')['default']
+    WangEditor: typeof import('./components/WangEditor/index.vue')['default']
   }
 }
