@@ -5,6 +5,7 @@ export default antfu({
   unocss: true,
   vue: true,
   rules: {
-    'import/newline-after-import': ['error', { count: 0 }],
+    'import/newline-after-import': 'off',
+    'unused-imports/no-unused-vars': 'off',
   },
 })
