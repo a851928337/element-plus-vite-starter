@@ -47,7 +47,7 @@ const equal = computed(() => {
   return content.value === json.value;
 });
 function handleAfterInsert(item: any, style: any) {
-  editorStore.editorRef?.dangerouslyInsertHtml(`<span style="color: ${style.color}; background-color: ${style['background-color']}; padding: ${style.padding}; border-radius: ${style['border-radius']}">#{${item.value}}</span>`)
+  editorStore.editorRef?.dangerouslyInsertHtml(`<span style="color: ${style.color}; background-color: ${style['background-color']}; padding: ${style.padding}; border-radius: ${style['border-radius']}">#{${item.label}}</span>`)
   console.log(editorStore.editorRef?.getHtml())
 }
 </script>
