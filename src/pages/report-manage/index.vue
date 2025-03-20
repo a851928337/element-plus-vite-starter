@@ -5,10 +5,9 @@ const router = useRouter()
 const tableData = ref([
   {
     name: '松莉美容科技（上海）有限公司',
-    reportName: '松莉美容',
+    reportName: '关联交易同期资料本地文档',
     reportType: '财务报告',
-    reportManager: '李小明',
-    updateTime: '2019-08-25 14:54',
+    reportManager: '张晓丽'
   },
 ])
 const currentPage = ref(1)
@@ -16,6 +15,9 @@ const pageSize = ref(10)
 const background = ref(true)
 function handleDetail(row: any) {
   router.push(`/report-manage/editor/${row.id}`)
+}
+function handleUpload(row: any) {
+  router.push(`/generate-report`)
 }
 </script>
 
@@ -44,14 +46,17 @@ function handleDetail(row: any) {
         <el-table-column prop="reportName" label="报告名称" />
         <el-table-column prop="reportType" label="报告类型" />
         <el-table-column prop="reportManager" label="报告负责人" />
-        <el-table-column width="200" fixed="right" label="操作">
+        <el-table-column width="250" fixed="right" label="操作">
           <template #default="scope">
-            <div class="buttons flex flex-col items-center justify-center">
-              <el-button type="primary" size="small" @click="handleDetail(scope.row)">
-                详情
+            <div class="buttons flex flex-row items-center justify-between">
+              <el-button type="primary" size="small" @click="handleUpload(scope.row)">
+                生成报告
               </el-button>
-              <el-button type="danger" size="small">
-                删除
+              <el-button  size="small" @click="handleDetail(scope.row)">
+                编辑模板
+              </el-button>
+              <el-button  size="small" @click="handleUpload(scope.row)">
+                反向模板
               </el-button>
             </div>
           </template>
@@ -62,6 +67,13 @@ function handleDetail(row: any) {
 </template>
 
 <style lang="scss" scoped>
+:deep(.ep-button--primary){
+  --ep-button-bg-color:#243adf;
+  --ep-button-border-color:#243adf;
+}
+:deep(.ep-pagination.is-background .ep-pager li.is-active){
+  background-color:#243adf;
+}
 .buttons {
   & > * {
     margin: 0;

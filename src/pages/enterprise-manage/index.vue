@@ -36,15 +36,15 @@ function gotoDetail(id: string) {
         class="flex-1" :table-data="tableData" :current-page="currentPage" :page-size="pageSize"
         :background="background"
       >
-        <el-table-column prop="name" label="企业名称" />
+        <el-table-column  width="300" prop="name" label="企业名称" />
         <el-table-column prop="shortName" label="企业简称" />
         <el-table-column prop="industry" label="所属行业" />
         <el-table-column prop="contact" label="企业联系人" />
         <el-table-column prop="reportManager" label="报告负责人" />
-        <el-table-column prop="updateTime" label="更新时间" />
-        <el-table-column width="200" fixed="right" label="操作">
+        <el-table-column width="150" prop="updateTime" label="更新时间" />
+        <el-table-column width="140" fixed="right" label="操作">
           <template #default="scope">
-            <div class="buttons flex flex-col items-center justify-center">
+            <div class="buttons flex flex-row justify-between">
               <el-button type="primary" size="small" @click="gotoDetail(scope.row.id)">
                 详情
               </el-button>
@@ -60,6 +60,13 @@ function gotoDetail(id: string) {
 </template>
 
 <style lang="scss" scoped>
+:deep(.ep-button--primary){
+  --ep-button-bg-color:#243adf;
+  --ep-button-border-color:#243adf;
+}
+:deep(.ep-pagination.is-background .ep-pager li.is-active){
+  background-color:#243adf;
+}
 .buttons {
   & > * {
     margin: 0;
