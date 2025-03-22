@@ -21,7 +21,6 @@ onMounted(() => {
   // if (editorRef.value) {
   const initialHtml = Editor.parseWordToRichText(mockWordJson)
   // editorRef.value.innerHTML = initialHtml;
-  console.log(initialHtml)
   content.value = initialHtml
   // }
 })
@@ -38,7 +37,6 @@ const equal = computed(() => {
 })
 function handleAfterInsert(item: any, style: any) {
   editorStore.editorRef?.dangerouslyInsertHtml(`<span style="color: ${style.color}; background-color: ${style['background-color']}; padding: ${style.padding}; border-radius: ${style['border-radius']}">#{${item.label}}</span>`)
-  console.log(editorStore.editorRef?.getHtml())
 }
 </script>
 

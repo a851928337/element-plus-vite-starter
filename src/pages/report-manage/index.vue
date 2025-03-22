@@ -7,7 +7,7 @@ const tableData = ref([
     name: '松莉美容科技（上海）有限公司',
     reportName: '关联交易同期资料本地文档',
     reportType: '财务报告',
-    reportManager: '张晓丽'
+    reportManager: '张晓丽',
   },
 ])
 const currentPage = ref(1)
@@ -52,10 +52,10 @@ function handleUpload(row: any) {
               <el-button type="primary" size="small" @click="handleUpload(scope.row)">
                 生成报告
               </el-button>
-              <el-button  size="small" @click="handleDetail(scope.row)">
+              <el-button size="small" @click="handleDetail(scope.row)">
                 编辑模板
               </el-button>
-              <el-button  size="small" @click="handleUpload(scope.row)">
+              <el-button size="small" @click="handleUpload(scope.row)">
                 反向模板
               </el-button>
             </div>
@@ -67,13 +67,13 @@ function handleUpload(row: any) {
 </template>
 
 <style lang="scss" scoped>
-:deep(.ep-button--primary){
-  --ep-button-bg-color:#243adf;
-  --ep-button-border-color:#243adf;
-}
-:deep(.ep-pagination.is-background .ep-pager li.is-active){
-  background-color:#243adf;
-}
+// :deep(.ep-button--primary){
+//   --ep-button-bg-color:#243adf;
+//   --ep-button-border-color:#243adf;
+// }
+// :deep(.ep-pagination.is-background .ep-pager li.is-active){
+//   background-color:#243adf;
+// }
 .buttons {
   & > * {
     margin: 0;

@@ -36,7 +36,7 @@ function gotoDetail(id: string) {
         class="flex-1" :table-data="tableData" :current-page="currentPage" :page-size="pageSize"
         :background="background"
       >
-        <el-table-column  width="300" prop="name" label="企业名称" />
+        <el-table-column width="300" prop="name" label="企业名称" />
         <el-table-column prop="shortName" label="企业简称" />
         <el-table-column prop="industry" label="所属行业" />
         <el-table-column prop="contact" label="企业联系人" />
@@ -60,13 +60,13 @@ function gotoDetail(id: string) {
 </template>
 
 <style lang="scss" scoped>
-:deep(.ep-button--primary){
-  --ep-button-bg-color:#243adf;
-  --ep-button-border-color:#243adf;
-}
-:deep(.ep-pagination.is-background .ep-pager li.is-active){
-  background-color:#243adf;
-}
+// :deep(.ep-button--primary){
+//   --ep-button-bg-color:#243adf;
+//   --ep-button-border-color:#243adf;
+// }
+// :deep(.ep-pagination.is-background .ep-pager li.is-active){
+//   background-color:#243adf;
+// }
 .buttons {
   & > * {
     margin: 0;

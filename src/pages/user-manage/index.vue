@@ -17,7 +17,7 @@ function gotoSet() {
   router.push('/user-manage/set')
 }
 function gotoDetail(id: string) {
-    router.push('/user-manage/set')
+  router.push('/user-manage/set')
 }
 </script>
 
@@ -34,7 +34,7 @@ function gotoDetail(id: string) {
         class="flex-1" :table-data="tableData" :current-page="currentPage" :page-size="pageSize"
         :background="background"
       >
-        <el-table-column  width="300" prop="name" label="人员名称" />
+        <el-table-column width="300" prop="name" label="人员名称" />
         <el-table-column prop="shortName" label="人员账号" />
         <el-table-column prop="industry" label="所在公司" />>
         <el-table-column width="150" prop="updateTime" label="更新时间" />
@@ -59,13 +59,13 @@ function gotoDetail(id: string) {
 </template>
 
 <style lang="scss" scoped>
-:deep(.ep-button--primary){
-  --ep-button-bg-color:#243adf;
-  --ep-button-border-color:#243adf;
-}
-:deep(.ep-pagination.is-background .ep-pager li.is-active){
-  background-color:#243adf;
-}
+// :deep(.ep-button--primary){
+//   --ep-button-bg-color:#243adf;
+//   --ep-button-border-color:#243adf;
+// }
+// :deep(.ep-pagination.is-background .ep-pager li.is-active){
+//   background-color:#243adf;
+// }
 .buttons {
   & > * {
     margin: 0;
